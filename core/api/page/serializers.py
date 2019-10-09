@@ -8,8 +8,8 @@ from core.models import Page
 
 
 class PageSerializer(serializers.ModelSerializer):
-    sub_pages = serializers.ListSerializer(source='children', child=RecursiveField())
+    sub_pages = serializers.ListSerializer(source='children', child=RecursiveField(), read_only=True)
 
     class Meta:
         model = Page
-        fields = ('id', 'name', 'content', 'sub_pages')
+        fields = ('id', 'name', 'content', 'parent', 'sub_pages')
